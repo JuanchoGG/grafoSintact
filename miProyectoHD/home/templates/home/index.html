@@ -1,0 +1,31 @@
+{% extends 'header.html' %} {% block contenido %}
+<h1>Curso de Reconocimiento de Patrones Sintáctico Estructural</h1>
+<h1>Octubre: Mes del Cáncer e mama</h1>
+
+<table style="border: 1px solid blue;">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Temperatura</th>
+            <th>Color</th>
+            <th>Inflamación</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for elemento in lista %}
+        <tr>
+            <td style="border: 1px solid blue;">{{elemento.pk}}</td>
+
+            {% if elemento.temperatura > 50 %}
+            <td style="border: 1px solid red;">{{elemento.temperatura}}</td>
+            {% else %}
+            <td style="border: 1px solid blue;">{{elemento.temperatura}}</td>
+            {% endif %}
+
+            <td style="border: 1px solid blue;">{{elemento.color}}</td>
+            <td style="border: 1px solid blue;">{{elemento.inflamation}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock contenido %}

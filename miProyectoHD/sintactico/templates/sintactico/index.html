@@ -1,0 +1,59 @@
+{% extends 'header.html' %} {% block contenido %}
+<h1>Sintactico</h1>
+
+<div style="height: 500px; overflow-x: scroll; overflow-y: scroll;">
+    <table style="border: 1px solid blue;">
+        <thead>
+            <tr>
+                <th></th>
+                {% for fila in lista %}
+                <th>R{{forloop.counter}}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for fila in distan %}
+            <tr>
+                <th>R{{forloop.counter}}</th>
+                {% for columna in fila %}
+                <td style="border: 1px solid blue;">{{columna}}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<h2> </h2>
+<h1>Grafo</h1>
+
+<form action="{% url 'sintactico:grafo' %}" method="post">
+    {% csrf_token %}
+    <input type="text" name="umbral">
+    <input type="submit" value="Recargar">
+</form>
+
+<div style="height: 500px; width: 300px; overflow-y: scroll;">
+    <table style="border: 1px solid blue;">
+        <thead>
+            <tr>
+                <th>Vo</th>
+                <th>Vf</th>
+                <th>d</th>
+                <th>Si/No</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for registro in grafo %}
+            <tr>
+                {% for columna in registro %}
+                <td style="border: 1px solid blue;">{{columna}}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+{% endblock contenido %}
